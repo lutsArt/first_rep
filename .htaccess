@@ -1,0 +1,14 @@
+# Don't show directory listing
+Options -Indexes
+
+# Set the default handler.
+DirectoryIndex index.php index.html
+
+# Various rewrite rules.
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+
+	RewriteCond   %{REQUEST_URI}       !^/index\.php
+	RewriteCond   %{REQUEST_URI}       !\.(css|js|txt|gif|png|jpg|ico|eot|svg|ttf|woff|swf|pdf)$
+	RewriteRule   .*                   index.php [L]
+</IfModule>
